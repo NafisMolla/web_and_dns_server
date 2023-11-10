@@ -162,16 +162,15 @@ def run_dns_client_formatted(server_ip, port=10000):  # DNS typically uses port 
             # Receive the response from the server
             response, _ = client_socket.recvfrom(512)
             
-            print(response)
             
             formatted_response = format_bytes(response.hex())
             
-            print(formatted_response)
+
             
             hex_string_without_spaces = formatted_response.replace(" ", "")
             # Parse response
             ip_address = extract_ips_from_dns_response(hex_string_without_spaces)
-            print(ip_address)
+
             
             for ip in ip_address:
                 print(f"> {domain_name}: type A, class IN, TTL 260, addr (4) {ip}")

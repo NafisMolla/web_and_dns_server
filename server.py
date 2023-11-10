@@ -63,6 +63,8 @@ try:
     while True:
         # Receive DNS query
         message, address = server_socket.recvfrom(512)
+        print(f"Request:\n{format_bytes(message.hex())}")
+        
         query_id = struct.unpack('!H', message[:2])[0]
         domain_length = struct.unpack('!B', message[12:13])[0]
         domain = message[13:13+domain_length].decode() 
@@ -79,8 +81,7 @@ try:
             server_socket.sendto(response, address)
 
             # Display response message
-            print(response)
-            # print(f"Response:\n{format_bytes(response.hex())}")
+            print(f"Response:\n{format_bytes(response.hex())}")
         else:
             print(f"Domain {domain} not found in DNS table.")
 
