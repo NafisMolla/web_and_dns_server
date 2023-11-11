@@ -153,7 +153,7 @@ def run_dns_client_formatted(server_ip, port=10000):  # DNS typically uses port 
             # Conditional statement to exit
             if domain_name.lower() == 'exit':
                 print("Client exiting.")
-                break
+                break   
 
             # Send the domain name as the DNS query to the server
             dns_query = create_dns_query(domain_name)

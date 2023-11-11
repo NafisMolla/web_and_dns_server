@@ -67,7 +67,7 @@ try:
         
         query_id = struct.unpack('!H', message[:2])[0]
         domain_length = struct.unpack('!B', message[12:13])[0]
-        domain = message[13:13+domain_length].decode() 
+        domain = message[13:13+domain_length].decode().lower() 
         extension_length = struct.unpack('!B', message[13 + domain_length:14 + domain_length])[0]
         extension = message[14 + domain_length:14 + domain_length + extension_length].decode()
         
